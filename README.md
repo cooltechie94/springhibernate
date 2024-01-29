@@ -1,8 +1,19 @@
-Special Note about Prototype Scope - Destroy Lifecycle Method and Lazy Init
-Prototype Beans and Destroy Lifecycle
+Application to perform CRUD operations on Students
 
-For "prototype" scoped beans, Spring does not call the destroy method.
-In contrast to the other scopes, Spring does not manage the complete lifecycle of a prototype bean: the container instantiates, configures, and otherwise assembles a prototype object, and hands it to the client, with no further record of that prototype instance.
+A common design pattern called DATA ACCESS OBJECT(DAO) is being followed 
+which is responsible for interfacing the database
+DAO Methods
+save(), findById(), findAll()
 
-Thus, although initialization lifecycle callback methods are called on all objects regardless of scope, in the case of prototypes, configured destruction lifecycle callbacks are not called. The client code must clean up prototype-scoped objects and release expensive resources that the prototype bean(s) are holding.
-Prototype Beans and Lazy Initialization => Prototype beans are lazy by default. There is no need to use the @Lazy annotation for prototype scopes beans.
+
+JPA Entity Manager is the main component for saving and retrieving the entities
+
+JPA Entity Manager needs a Data Source and the Data source defines database connection info
+
+JPA Entity Manager & Data Source are automatically created by Spring boot based on the application.properties
+
+We can autowire/inject the JPA Entity Manager into our Student DAO
+
+**Diagram**
+
+**Student DAO <====> Entity Manager <====> Data Source <====> Database**
